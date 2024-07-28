@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Homepage</title>
+  </head>
+  <body>
+    <ul>
+      <% if (locals.trainers){ %> <% trainers.forEach((trainer)=>{ %>
+      <li>Trainer: <%= trainer.name %></li>
+      <% })} %>
+    </ul>
+    <ul>
+      <% if (locals.pokemons){ %> <% pokemons.forEach((pokemons)=>{ %>
+      <li>Pokemons: <%= pokemons.name %></li>
+      <% })} %>
+    </ul>
+    <ul>
+      <% if (locals.types){ %> <% types.forEach((type)=>{ %>
+      <li>Type: <%= type.type %></li>
+      <% })} %>
+    </ul>
+  </body>
+</html>
