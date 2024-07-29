@@ -3,38 +3,38 @@
 const { Client } = require("pg");
 const { argv } = require("node:process");
 
-// tables trainer, types, pokemon
+// tables trainers, types, pokemon
 const SQL = `
 CREATE TABLE IF NOT EXISTS types (
   id INT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
-  type VARCHAR (15)
+  type_name VARCHAR (15)
 );
 
-CREATE TABLE IF NOT EXISTS trainer (
+CREATE TABLE IF NOT EXISTS trainers (
   id INT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
-  name VARCHAR (15)
+  trainer_name VARCHAR (15)
 );
 
 CREATE TABLE IF NOT EXISTS pokemons (
   id INT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
-  name VARCHAR (15),
+  pokemon_name VARCHAR (15),
   trainer_id INT,
   type_id INT,
   CONSTRAINT fk_trainer FOREIGN KEY(trainer_id)
-    REFERENCES trainer(id)
+    REFERENCES trainers(id)
     ON DELETE CASCADE,
   CONSTRAINT fk_type FOREIGN KEY(type_id)
     REFERENCES types(id)
     ON DELETE CASCADE
 );
 
-INSERT INTO types (type) 
+INSERT INTO types (type_name) 
 VALUES ('fire');
 
-INSERT INTO trainer (name)
+INSERT INTO trainers (trainer_name)
 VALUES ('Ash');
 
-INSERT INTO pokemons (name, trainer_id, type_id)
+INSERT INTO pokemons (pokemon_name, trainer_id, type_id)
 VALUES ('pikachu', 1, 1);
 `;
 

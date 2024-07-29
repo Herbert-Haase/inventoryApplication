@@ -8,18 +8,25 @@
   <body>
     <ul>
       <% if (locals.trainers){ %> <% trainers.forEach((trainer)=>{ %>
-      <li>Trainer: <%= trainer.name %></li>
+      <li>Trainer: <%= trainer.trainer_name %></li>
       <% })} %>
     </ul>
     <ul>
       <% if (locals.pokemons){ %> <% pokemons.forEach((pokemons)=>{ %>
-      <li>Pokemons: <%= pokemons.name %></li>
+      <li>Pokemons: <%= pokemons.pokemon_name %></li>
       <% })} %>
     </ul>
     <ul>
       <% if (locals.types){ %> <% types.forEach((type)=>{ %>
-      <li>Type: <%= type.type %></li>
+      <li>Type: <%= type.type_name %></li>
       <% })} %>
     </ul>
+    <form action="/" method="post">
+      <a
+        type="submit"
+        onclick="return confirm('Are you sure you want to delete all records?')"
+        ><button>Delete</button></a
+      >
+    </form>
   </body>
 </html>

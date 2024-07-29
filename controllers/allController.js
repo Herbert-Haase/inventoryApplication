@@ -21,3 +21,9 @@ exports.typesGet = asyncHandler(async (req, res) => {
 
   res.render("allTypes", { types: types });
 });
+
+exports.deletePost = asyncHandler(async (req, res) => {
+  await db.deleteAll();
+  console.log("All records have been deleted");
+  res.redirect("/");
+});

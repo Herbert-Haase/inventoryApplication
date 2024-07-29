@@ -15,6 +15,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use("/pokemon", pokemonRouter);
 app.use("/type", typeRouter);
 app.get("/", controller.pokemonsTrainersTypesGet);
+app.post("/", controller.deletePost);
 
 const PORT = process.env.PORT || 3000;
 
