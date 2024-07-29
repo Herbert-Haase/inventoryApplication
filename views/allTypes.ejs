@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>All Types</title>
+  </head>
+  <body>
+    <ul>
+      <% if (locals.types){ %> <% types.forEach((type)=>{ %>
+      <li>
+        <ul>
+          Types: <%= type.type %>
+          <li>Pokemons: <%= type.name %></li>
+        </ul>
+      </li>
+      <% })} %>
+    </ul>
+  </body>
+</html>

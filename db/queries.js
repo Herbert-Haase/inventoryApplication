@@ -8,7 +8,9 @@ async function getAllPokemons() {
 
 // types
 async function getAllTypes() {
-  const { rows } = await pool.query("SELECT * FROM types");
+  const { rows } = await pool.query(
+    "SELECT * FROM types JOIN pokemons ON types.id = pokemons.id"
+  );
   return rows;
 }
 

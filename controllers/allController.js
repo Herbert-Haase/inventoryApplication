@@ -14,3 +14,10 @@ exports.pokemonsGet = asyncHandler(async (req, res) => {
 
   res.render("allPokemons", { pokemons: pokemons });
 });
+
+exports.typesGet = asyncHandler(async (req, res) => {
+  const types = await db.getAllTypes();
+  console.log(types);
+
+  res.render("allTypes", { types: types });
+});
