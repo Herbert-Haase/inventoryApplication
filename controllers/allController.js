@@ -29,6 +29,20 @@ exports.typesGet = asyncHandler(async (req, res) => {
   });
 });
 
+exports.trainersGet = asyncHandler(async (req, res) => {
+  const trainers = await db.getAllTrainers();
+
+  for (let trainer of trainers) {
+    trainer.pokemons = [];
+    const pokemons = await db.getAllPokemonsOfATrainer(trainer.trainer_name);
+    trainer.pokemons.push(...pokemons);
+  }
+
+  res.render("allTrainers", {
+    trainers: trainers,
+  });
+});
+
 exports.deletePost = asyncHandler(async (req, res) => {
   await db.deleteAll();
   console.log("All records have been deleted");

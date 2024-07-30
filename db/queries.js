@@ -29,6 +29,17 @@ async function getAllTrainers() {
   return rows;
 }
 
+async function getAllPokemonsOfATrainer(type) {
+  const { rows } = await pool.query(
+    `
+    SELECT * FROM pokemons
+    JOIN trainers
+    ON trainers.id = pokemons.type_id AND trainers.trainer_name = $1`,
+    [type]
+  );
+  return rows;
+}
+
 async function deleteAll() {
   await pool.query(`
     DROP TABLE pokemons;
@@ -66,4 +77,5 @@ module.exports = {
   getAllTrainers,
   deleteAll,
   getAllPokemonsOfAType,
+  getAllPokemonsOfATrainer,
 };

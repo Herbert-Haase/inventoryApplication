@@ -7,10 +7,11 @@
   </head>
   <body>
     <ul>
-      <% if (locals.types){ %> <% types.forEach((type)=>{ %>
+      <% if (locals.trainers){ %> <% trainers.forEach((trainer)=>{ %>
       <li>
         <ul>
-          Type: <%= type.type_name %> <% type.pokemons.forEach((pokemon)=>{ %>
+          Trainer: <%= trainer.trainer_name %> <%
+          trainer.pokemons.forEach((pokemon)=>{ %>
           <li>Pokemon: <%= pokemon.pokemon_name %></li>
           <% }) %>
         </ul>
