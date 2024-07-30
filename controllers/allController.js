@@ -17,9 +17,16 @@ exports.pokemonsGet = asyncHandler(async (req, res) => {
 
 exports.typesGet = asyncHandler(async (req, res) => {
   const types = await db.getAllTypes();
-  console.log(types);
 
-  res.render("allTypes", { types: types });
+  for (let type of types) {
+    type.pokemons = [];
+    const pokemons = await db.getAllPokemonsOfAType(type.type_name);
+    type.pokemons.push(...pokemons);
+  }
+
+  res.render("allTypes", {
+    types: types,
+  });
 });
 
 exports.deletePost = asyncHandler(async (req, res) => {

@@ -6,11 +6,20 @@ async function getAllPokemons() {
   return rows;
 }
 
+async function getAllPokemonsOfAType(type) {
+  const { rows } = await pool.query(
+    `
+    SELECT * FROM pokemons
+    JOIN types
+    ON types.id = pokemons.type_id AND types.type_name = $1`,
+    [type]
+  );
+  return rows;
+}
+
 // types
 async function getAllTypes() {
-  const { rows } = await pool.query(
-    "SELECT * FROM types JOIN pokemons ON types.id = pokemons.id"
-  );
+  const { rows } = await pool.query("SELECT * FROM types");
   return rows;
 }
 
@@ -56,4 +65,5 @@ module.exports = {
   getAllTypes,
   getAllTrainers,
   deleteAll,
+  getAllPokemonsOfAType,
 };

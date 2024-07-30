@@ -5,6 +5,9 @@ const { argv } = require("node:process");
 
 // tables trainers, types, pokemon
 const SQL = `
+    DROP TABLE pokemons;
+    DROP TABLE trainers;
+    DROP TABLE types;
 CREATE TABLE IF NOT EXISTS types (
   id INT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
   type_name VARCHAR (15)
@@ -35,7 +38,7 @@ INSERT INTO trainers (trainer_name)
 VALUES ('Ash');
 
 INSERT INTO pokemons (pokemon_name, trainer_id, type_id)
-VALUES ('pikachu', 1, 1);
+VALUES ('pikachu', 1, 1), ('glumanda', 1, 1);
 `;
 
 async function main() {
