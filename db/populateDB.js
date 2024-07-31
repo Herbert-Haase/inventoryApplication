@@ -38,7 +38,7 @@ INSERT INTO trainers (trainer_name)
 VALUES ('Ash');
 
 INSERT INTO pokemons (pokemon_name, trainer_id, type_id)
-VALUES ('pikachu', 1, 1), ('glumanda', 1, 1);
+VALUES ('pikachu', 1, 1);
 `;
 
 async function main() {
