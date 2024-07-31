@@ -55,6 +55,12 @@ exports.trainersGet = asyncHandler(async (req, res) => {
   });
 });
 
+exports.trainerGet = asyncHandler(async (req, res) => {
+  const trainer = await db.getTrainer(req.params.id);
+
+  res.render("specificTrainer", { trainer: trainer });
+});
+
 exports.deletePost = asyncHandler(async (req, res) => {
   await db.deleteAll();
   console.log("All records have been deleted");

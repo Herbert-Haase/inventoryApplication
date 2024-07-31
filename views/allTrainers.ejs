@@ -10,8 +10,9 @@
       <% if (locals.trainers){ %> <% trainers.forEach((trainer)=>{ %>
       <li>
         <ul>
-          Trainer: <%= trainer.trainer_name %> <%
-          trainer.pokemons.forEach((pokemon)=>{ %>
+          Trainer:
+          <a href="/trainer/<%= trainer.id %>"><%= trainer.trainer_name %></a>
+          <% trainer.pokemons.forEach((pokemon)=>{ %>
           <li>Pokemon: <%= pokemon.pokemon_name %></li>
           <% }) %>
         </ul>
