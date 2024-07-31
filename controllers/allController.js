@@ -15,6 +15,12 @@ exports.pokemonsGet = asyncHandler(async (req, res) => {
   res.render("allPokemons", { pokemons: pokemons });
 });
 
+exports.pokemonGet = asyncHandler(async (req, res) => {
+  const pokemon = await db.getPokemon(req.params.id);
+
+  res.render("specificPokemon", { pokemon: pokemon });
+});
+
 exports.typesGet = asyncHandler(async (req, res) => {
   const types = await db.getAllTypes();
 

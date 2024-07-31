@@ -17,6 +17,11 @@ async function getAllPokemonsOfAType(type) {
   return rows;
 }
 
+async function getPokemon(id) {
+  const { rows } = await pool.query("SELECT * FROM pokemons WHERE id=$1", [id]);
+  return rows;
+}
+
 // types
 async function getAllTypes() {
   const { rows } = await pool.query("SELECT * FROM types");
@@ -78,4 +83,5 @@ module.exports = {
   deleteAll,
   getAllPokemonsOfAType,
   getAllPokemonsOfATrainer,
+  getPokemon,
 };

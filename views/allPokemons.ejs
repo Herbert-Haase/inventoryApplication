@@ -8,7 +8,10 @@
   <body>
     <ul>
       <% if (locals.pokemons){ %> <% pokemons.forEach((pokemon)=>{ %>
-      <li>Pokemon: <%= pokemon.pokemon_name %></li>
+      <li>
+        Pokemon:
+        <a href="/pokemon/<%= pokemon.id %> "><%= pokemon.pokemon_name %></a>
+      </li>
       <% })} %>
     </ul>
   </body>
