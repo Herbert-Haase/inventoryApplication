@@ -35,6 +35,12 @@ exports.typesGet = asyncHandler(async (req, res) => {
   });
 });
 
+exports.typeGet = asyncHandler(async (req, res) => {
+  const type = await db.getType(req.params.id);
+
+  res.render("specificType", { type: type });
+});
+
 exports.trainersGet = asyncHandler(async (req, res) => {
   const trainers = await db.getAllTrainers();
 

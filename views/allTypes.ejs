@@ -10,8 +10,13 @@
       <% if (locals.types){ %> <% types.forEach((type)=>{ %>
       <li>
         <ul>
-          Type: <%= type.type_name %> <% type.pokemons.forEach((pokemon)=>{ %>
-          <li>Pokemon: <%= pokemon.pokemon_name %></li>
+          Type:
+          <a href="/type/<%= type.id %>"><%= type.type_name %></a>
+          <% type.pokemons.forEach((pokemon)=>{ %>
+          <li>
+            Pokemon:
+            <a href="/pokemon/<%=pokemon.id %>"><%= pokemon.pokemon_name %></a>
+          </li>
           <% }) %>
         </ul>
       </li>
