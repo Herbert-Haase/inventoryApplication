@@ -1,6 +1,21 @@
 const db = require("../db/queries");
 const asyncHandler = require("express-async-handler");
 
+// pokemon
+exports.pokemonCreateGet = asyncHandler(async (req, res) => {
+  const trainers = await db.getAllTrainers();
+  const types = await db.getAllTypes();
+
+  res.render("createPokemon", { trainers: trainers, types: types });
+});
+exports.pokemonCreatePost = asyncHandler(async (req, res) => {
+  await db.createPokemon(
+    req.body.pokemonName,
+    req.body.TrainerID,
+    req.body.TypeID
+  );
+  res.redirect("/");
+});
 exports.pokemonsTrainersTypesGet = asyncHandler(async (req, res) => {
   const trainers = await db.getAllTrainers();
   const pokemons = await db.getAllPokemons();
@@ -21,6 +36,7 @@ exports.pokemonGet = asyncHandler(async (req, res) => {
   res.render("specificPokemon", { pokemon: pokemon });
 });
 
+// type
 exports.typesGet = asyncHandler(async (req, res) => {
   const types = await db.getAllTypes();
 
@@ -41,6 +57,7 @@ exports.typeGet = asyncHandler(async (req, res) => {
   res.render("specificType", { type: type });
 });
 
+// trainer
 exports.trainersGet = asyncHandler(async (req, res) => {
   const trainers = await db.getAllTrainers();
 
@@ -61,6 +78,7 @@ exports.trainerGet = asyncHandler(async (req, res) => {
   res.render("specificTrainer", { trainer: trainer });
 });
 
+// all
 exports.deletePost = asyncHandler(async (req, res) => {
   await db.deleteAll();
   console.log("All records have been deleted");

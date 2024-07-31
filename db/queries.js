@@ -103,4 +103,5 @@ module.exports = {
   getAllPokemonsOfAType,
   getAllPokemonsOfATrainer,
   getPokemon,
+  createPokemon,
 };

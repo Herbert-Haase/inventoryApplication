@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Create Pokemon</title>
+  </head>
+  <body>
+    <% if (locals.trainers[0] && locals.types[0]){ %>
+    <form action="/pokemon/create" method="post">
+      <label for="pokemonName">Name: </label>
+      <input type="text" name="pokemonName" id="pokemonName" />
+      <label for="TypeID">Type: </label>
+      <select name="TypeID" id="TypeID">
+        <% types.forEach((type)=>{%>
+        <option value="<%= type.id %>"><%= type.type_name %></option>
+        <% }) %>
+      </select>
+      <label for="TrainerID">Trainer: </label>
+      <select name="TrainerID" id="TrainerID">
+        <% trainers.forEach((trainer)=>{%>
+        <option value="<%= trainer.id %>"><%= trainer.trainer_name %></option>
+        <% }) %>
+      </select>
+      <button type="submit">Submit</button>
+    </form>
+    <% } else { %>
+    <h2>Please create types and trainers first</h1>
+    <% } %>
+  </body>
+</html>
