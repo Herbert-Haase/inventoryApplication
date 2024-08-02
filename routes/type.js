@@ -4,10 +4,12 @@ const {
   typeGet,
   typeCreateGet,
   typeCreatePost,
+  typeDelete,
 } = require("../controllers/allController");
 const router = Router();
 
 router.get("/", typesGet);
+router.post("/delete", typeDelete);
 router.get("/create", typeCreateGet);
 router.post("/create", typeCreatePost);
 router.get("/:id", typeGet);

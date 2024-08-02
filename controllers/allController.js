@@ -72,6 +72,12 @@ exports.typeCreateGet = asyncHandler(async (req, res) => {
   res.render("createType");
 });
 
+exports.typeDelete = asyncHandler(async (req, res) => {
+  const { id } = req.body;
+  await db.deleteType(id);
+  res.redirect("/");
+});
+
 // trainer
 exports.trainersGet = asyncHandler(async (req, res) => {
   const trainers = await db.getAllTrainers();
