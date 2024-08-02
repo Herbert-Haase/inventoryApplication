@@ -76,6 +76,11 @@ async function createTrainer(trainer_name) {
   ]);
 }
 
+async function deleteTrainer(id) {
+  await pool.query("DELETE FROM trainers WHERE id = $1", [id]);
+}
+
+// all
 async function deleteAll() {
   await pool.query(`
     DROP TABLE pokemons;
@@ -121,4 +126,5 @@ module.exports = {
   createType,
   createTrainer,
   deletePokemon,
+  deleteTrainer,
 };
