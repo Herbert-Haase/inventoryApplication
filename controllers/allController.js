@@ -57,6 +57,15 @@ exports.typeGet = asyncHandler(async (req, res) => {
   res.render("specificType", { type: type });
 });
 
+exports.typeCreatePost = asyncHandler(async (req, res) => {
+  await db.createType(req.body.typeName);
+  res.redirect("/");
+});
+
+exports.typeCreateGet = asyncHandler(async (req, res) => {
+  res.render("createType");
+});
+
 // trainer
 exports.trainersGet = asyncHandler(async (req, res) => {
   const trainers = await db.getAllTrainers();
