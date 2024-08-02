@@ -29,6 +29,10 @@ async function createPokemon(pokemon_name, trainer_id, type_id) {
   );
 }
 
+async function deletePokemon(id) {
+  await pool.query("DELETE FROM pokemons WHERE id = $1", [id]);
+}
+
 // types
 async function getAllTypes() {
   const { rows } = await pool.query("SELECT * FROM types");
@@ -116,4 +120,5 @@ module.exports = {
   createPokemon,
   createType,
   createTrainer,
+  deletePokemon,
 };

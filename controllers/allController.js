@@ -36,6 +36,12 @@ exports.pokemonGet = asyncHandler(async (req, res) => {
   res.render("specificPokemon", { pokemon: pokemon });
 });
 
+exports.pokemonDelete = asyncHandler(async (req, res) => {
+  const { id } = req.body;
+  await db.deletePokemon(id);
+  res.redirect("/");
+});
+
 // type
 exports.typesGet = asyncHandler(async (req, res) => {
   const types = await db.getAllTypes();
