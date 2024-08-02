@@ -66,6 +66,12 @@ async function getAllPokemonsOfATrainer(type) {
   return rows;
 }
 
+async function createTrainer(trainer_name) {
+  await pool.query("INSERT INTO trainers (trainer_name) VALUES ($1)", [
+    trainer_name,
+  ]);
+}
+
 async function deleteAll() {
   await pool.query(`
     DROP TABLE pokemons;
@@ -109,4 +115,5 @@ module.exports = {
   getPokemon,
   createPokemon,
   createType,
+  createTrainer,
 };

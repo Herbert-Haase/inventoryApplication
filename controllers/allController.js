@@ -87,6 +87,15 @@ exports.trainerGet = asyncHandler(async (req, res) => {
   res.render("specificTrainer", { trainer: trainer });
 });
 
+exports.trainerCreatePost = asyncHandler(async (req, res) => {
+  await db.createTrainer(req.body.trainerName);
+  res.redirect("/");
+});
+
+exports.trainerCreateGet = asyncHandler(async (req, res) => {
+  res.render("createTrainer");
+});
+
 // all
 exports.deletePost = asyncHandler(async (req, res) => {
   await db.deleteAll();
