@@ -5,6 +5,8 @@ const {
   typeCreateGet,
   typeCreatePost,
   typeDelete,
+  typeUpdateGet,
+  typeUpdatePost,
 } = require("../controllers/allController");
 const router = Router();
 
@@ -13,5 +15,7 @@ router.post("/delete", typeDelete);
 router.get("/create", typeCreateGet);
 router.post("/create", typeCreatePost);
 router.get("/:id", typeGet);
+router.get("/:id/update", typeUpdateGet);
+router.post("/update", typeUpdatePost);
 
 module.exports = router;

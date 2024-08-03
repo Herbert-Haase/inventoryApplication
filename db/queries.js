@@ -51,8 +51,12 @@ async function getType(id) {
   return rows;
 }
 
-async function createType(type_name) {
-  await pool.query("INSERT INTO types (type_name) VALUES ($1)", [type_name]);
+async function createType(name) {
+  await pool.query("INSERT INTO types (type_name) VALUES ($1)", [name]);
+}
+
+async function updateType(id, name) {
+  await pool.query("UPDATE types SET type_name = $1 WHERE id = $2", [name, id]);
 }
 
 async function deleteType(id) {
@@ -140,4 +144,5 @@ module.exports = {
   deleteTrainer,
   deleteType,
   updatePokemon,
+  updateType,
 };

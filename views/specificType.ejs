@@ -8,6 +8,7 @@
   <body>
     <% if (locals.type){ %> <% type.forEach((type)=>{ %>
     <li>Type: <%= type.type_name %></li>
+    <a href="/type/<%=type.id%>/update"><button>Upate</button></a>
     <form action="/type/delete" method="post">
       <input type="hidden" name="id" value="<%= type.id %>">
       <a

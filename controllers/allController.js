@@ -96,6 +96,16 @@ exports.typeDelete = asyncHandler(async (req, res) => {
   res.redirect("/");
 });
 
+exports.typeUpdateGet = asyncHandler(async (req, res) => {
+  const id = req.params.id;
+
+  res.render("updateType", { id: id });
+});
+exports.typeUpdatePost = asyncHandler(async (req, res) => {
+  await db.updateType(req.body.id, req.body.typeName);
+  res.redirect("/");
+});
+
 // trainer
 exports.trainersGet = asyncHandler(async (req, res) => {
   const trainers = await db.getAllTrainers();
