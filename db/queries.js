@@ -29,6 +29,13 @@ async function createPokemon(pokemon_name, trainer_id, type_id) {
   );
 }
 
+async function updatePokemon(id, name, trainer_id, type_id) {
+  await pool.query(
+    "UPDATE pokemons SET pokemon_name = $1, trainer_id = $2, type_id = $3 WHERE id = $4",
+    [name, trainer_id, type_id, id]
+  );
+}
+
 async function deletePokemon(id) {
   await pool.query("DELETE FROM pokemons WHERE id = $1", [id]);
 }
@@ -132,4 +139,5 @@ module.exports = {
   deletePokemon,
   deleteTrainer,
   deleteType,
+  updatePokemon,
 };

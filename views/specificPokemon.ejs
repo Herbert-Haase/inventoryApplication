@@ -8,6 +8,7 @@
   <body>
     <% if (locals.pokemon){ %> <% pokemon.forEach((pokemon)=>{ %>
     <li>Pokemon: <%= pokemon.pokemon_name %></li>
+    <a href="/pokemon/<%= pokemon.id %>/update"><button>Update</button></a>
     <form action="/pokemon/delete" method="post">
       <input type="hidden" name="id" value="<%= pokemon.id %>">
       <a

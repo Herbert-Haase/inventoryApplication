@@ -16,6 +16,24 @@ exports.pokemonCreatePost = asyncHandler(async (req, res) => {
   );
   res.redirect("/");
 });
+
+exports.pokemonUpdateGet = asyncHandler(async (req, res) => {
+  const trainers = await db.getAllTrainers();
+  const types = await db.getAllTypes();
+  const id = req.params.id;
+
+  res.render("updatePokemon", { id: id, trainers: trainers, types: types });
+});
+exports.pokemonUpdatePost = asyncHandler(async (req, res) => {
+  await db.updatePokemon(
+    req.body.id,
+    req.body.pokemonName,
+    req.body.TrainerID,
+    req.body.TypeID
+  );
+  res.redirect("/");
+});
+
 exports.pokemonsTrainersTypesGet = asyncHandler(async (req, res) => {
   const trainers = await db.getAllTrainers();
   const pokemons = await db.getAllPokemons();

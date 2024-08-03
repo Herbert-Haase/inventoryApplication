@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Update Pokemon</title>
+  </head>
+  <body>
+    <form action="/pokemon/update" method="post">
+      <input type="hidden" name="id" value="<%= id %>" />
+      <label for="pokemonName">Name: </label>
+      <input type="text" name="pokemonName" id="pokemonName" />
+      <label for="TypeID">Type: </label>
+      <select name="TypeID" id="TypeID">
+        <% types.forEach((type)=>{%>
+        <option value="<%= type.id %>"><%= type.type_name %></option>
+        <% }) %>
+      </select>
+      <label for="TrainerID">Trainer: </label>
+      <select name="TrainerID" id="TrainerID">
+        <% trainers.forEach((trainer)=>{%>
+        <option value="<%= trainer.id %>"><%= trainer.trainer_name %></option>
+        <% }) %>
+      </select>
+      <button type="submit">Submit</button>
+    </form>
+  </body>
+</html>
