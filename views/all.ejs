@@ -8,17 +8,26 @@
   <body>
     <ul>
       <% if (locals.trainers){ %> <% trainers.forEach((trainer)=>{ %>
-      <li>Trainer: <%= trainer.trainer_name %></li>
+      <li>
+        <a href="/trainer">Trainer</a>:
+        <a href="/trainer/<%= trainer.id%>"><%= trainer.trainer_name %></a>
+      </li>
       <% })} %>
     </ul>
     <ul>
-      <% if (locals.pokemons){ %> <% pokemons.forEach((pokemons)=>{ %>
-      <li>Pokemons: <%= pokemons.pokemon_name %></li>
+      <% if (locals.pokemons){ %> <% pokemons.forEach((pokemon)=>{ %>
+      <li>
+        <a href="/pokemon">Pokemons</a>:
+        <a href="/pokemon/<%= pokemon.id%>"><%= pokemon.pokemon_name %></a>
+      </li>
       <% })} %>
     </ul>
     <ul>
       <% if (locals.types){ %> <% types.forEach((type)=>{ %>
-      <li>Type: <%= type.type_name %></li>
+      <li>
+        <a href="/type">Types</a>:
+        <a href="/type/<%= type.id %>"><%= type.type_name %></a>
+      </li>
       <% })} %>
     </ul>
     <form action="/" method="post">
