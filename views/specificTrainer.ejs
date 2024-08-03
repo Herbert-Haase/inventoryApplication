@@ -8,6 +8,7 @@
   <body>
     <% if (locals.trainer){ %> <% trainer.forEach((trainer)=>{ %>
     <li>Trainer: <%= trainer.trainer_name %></li>
+    <a href="/trainer/<%= trainer.id %>/update"><button>Update</button></a>
     <form action="/trainer/delete" method="post">
       <input type="hidden" name="id" value="<%= trainer.id %>">
       <a

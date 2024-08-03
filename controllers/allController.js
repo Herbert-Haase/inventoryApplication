@@ -142,6 +142,16 @@ exports.trainerDelete = asyncHandler(async (req, res) => {
   res.redirect("/");
 });
 
+exports.trainerUpdateGet = asyncHandler(async (req, res) => {
+  const id = req.params.id;
+
+  res.render("updateTrainer", { id: id });
+});
+exports.trainerUpdatePost = asyncHandler(async (req, res) => {
+  await db.updateTrainer(req.body.id, req.body.trainerName);
+  res.redirect("/");
+});
+
 // all
 exports.deletePost = asyncHandler(async (req, res) => {
   await db.deleteAll();

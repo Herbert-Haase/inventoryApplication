@@ -95,6 +95,13 @@ async function deleteTrainer(id) {
   await pool.query("DELETE FROM trainers WHERE id = $1", [id]);
 }
 
+async function updateTrainer(id, name) {
+  await pool.query("UPDATE trainers SET trainer_name = $1 WHERE id = $2", [
+    name,
+    id,
+  ]);
+}
+
 // all
 async function deleteAll() {
   await pool.query(`
@@ -145,4 +152,5 @@ module.exports = {
   deleteType,
   updatePokemon,
   updateType,
+  updateTrainer,
 };
